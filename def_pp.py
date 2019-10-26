@@ -16,12 +16,12 @@ def search_word(file, word, sign):
 
     print('Jeszcze moment')
     for num_line in range(len(doc.paragraphs)):
-        if search_word in doc.paragraphs[num_line].text:
+        if search_word in doc.paragraphs[num_line].text or search_word.capitalize() in doc.paragraphs[num_line].text:
             step = 0
             while(True):
                 if document_sign in doc.paragraphs[num_line-step].text:
                     if step != 0:
-                        result_file.write(doc.paragraphs[num_line-step].text)
+                        result_file.write(doc.paragraphs[num_line-step].text[:30]+'...')
                         result_file.write('\n')
                     result_file.write(doc.paragraphs[num_line].text)
                     result_file.write('\n')
