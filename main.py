@@ -11,7 +11,6 @@
 #?? pip install textract
 
 from tkinter import *
-from tkinter import messagebox
 from tkinter import filedialog as fd
 import webbrowser
 import def_pp
@@ -36,34 +35,31 @@ class Aplikacja(Frame):
         root.config(menu=menubar)
 
         # przycisk SZUKAJ
-        self.knefel1 = Button(self, text="SZUKAJ")
-        self.knefel1.grid(row=0, column=2, sticky=E)
+        self.knefel1 = Button(self, text="SZUKAJ", height = 3, width = 20)
+        self.knefel1.grid(row=7, column=0, sticky=E)
         self.knefel1['command'] = self.knefel_start
 
         self.logo = PhotoImage(file="python2.gif")
         self.l_image = Label(self, image=self.logo)
-        self.l_image.grid(row=10, column=0, sticky=W)
+        self.l_image.grid(row=12, column=0, sticky=N)
 
         # Label autor
         self.l_dev = Label(self, text='Sławek Jona - 2019 \n slawomir.jona@gmail.com')
-        self.l_dev.grid(row=10, column=1, sticky=W)
+        self.l_dev.grid(row=13, column=0, sticky=N)
 
-        # Label Czekaj
-        self.l_wait = Label(self, text='')
-        self.l_wait.grid(row=0, column=1, sticky=W)
 
         # Label nazwa pliku
         self.l_enter_file = Label(self, text='Szukaj w:')
         self.l_enter_file.grid(row=0, column=0, sticky=W)
         # pole nazwa pliku
-        self.enter_file = Entry(self)
+        self.enter_file = Entry(self, width = 60)
         self.enter_file.grid(row=1, column=0, sticky=W)
 
         # Label szukane słowo
         self.l_search_word = Label(self, text='Szukane słowo:')
         self.l_search_word.grid(row=2, column=0, columnspan=1, sticky=W)
         # pole szukane słowo
-        self.search_word = Entry(self)
+        self.search_word = Entry(self, width = 60)
         self.search_word.grid(row=3, column=0, columnspan=4, sticky=W)
 
         # Label znak podziału dokumentu
@@ -84,28 +80,27 @@ class Aplikacja(Frame):
                     variable=self.doc_sign,
                     value='§',
                     command=self.update_radio
-                    ).grid(row=5, column=1, sticky=W)
+                    ).grid(row=6, column=0, sticky=W)
 
         # Label Przydatne linki
         self.link1 = Label(self, text='Przydatne linki:', font='bold')
-        self.link1.grid(row=6, column=0, columnspan=1, sticky=W)
+        self.link1.grid(row=8, column=0, columnspan=1, sticky=N)
 
         self.link2 = Label(self, text='Wyższy Urząd Górniczy', fg="blue", cursor="hand2")
         self.link2.bind("<Button-1>", lambda e: webbrowser.open_new("http://www.wug.gov.pl/prawo/akty_prawne"))
-        self.link2.grid(row=7, column=0, columnspan=1, sticky=W)
+        self.link2.grid(row=9, column=0, columnspan=1, sticky=N)
 
         self.link3 = Label(self, text='Państwowa Agencja Atomistyki', fg="blue", cursor="hand2")
         self.link3.bind("<Button-1>", lambda e: webbrowser.open_new("http://www.paa.gov.pl/strona-39-prawo.html"))
-        self.link3.grid(row=8, column=0, columnspan=1, sticky=W)
+        self.link3.grid(row=10, column=0, columnspan=1, sticky=N)
 
         self.link3 = Label(self, text='Prawo budowlane', fg="blue", cursor="hand2")
         self.link3.bind("<Button-1>", lambda e: webbrowser.open_new("http://prawo-budowlane.org/"))
-        self.link3.grid(row=9, column=0, columnspan=1, sticky=W)
+        self.link3.grid(row=11, column=0, columnspan=1, sticky=N)
 
         return 0
 
     def knefel_start(self):
-        self.l_wait['text'] = 'Czekaj..'
         file = self.enter_file.get()
         word = self.search_word.get()
         sign = self.doc_sign.get()
@@ -119,7 +114,6 @@ class Aplikacja(Frame):
             return 0
 
         def_pp.search_word(file, word, sign)
-        self.l_wait['text'] = ''
         return 0
 
     def open_file(self):
@@ -139,7 +133,7 @@ class Aplikacja(Frame):
 ####################
 root = Tk()
 root.title('Pomocnik prawny 1.0')
-root.geometry('410x360')
+root.geometry('410x470')
 
 apka = Aplikacja(root)
 root.mainloop()
