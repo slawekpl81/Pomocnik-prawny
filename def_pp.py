@@ -15,6 +15,7 @@ def search_word(file, word, sign):
     doc = docx.Document(file_name)
 
     print('Jeszcze moment')
+    search_index = 0
     for num_line in range(len(doc.paragraphs)):
         if search_word in doc.paragraphs[num_line].text or search_word.capitalize() in doc.paragraphs[num_line].text:
             step = 0
@@ -26,7 +27,8 @@ def search_word(file, word, sign):
                     result_file.write(doc.paragraphs[num_line].text)
                     result_file.write('\n')
                     result_file.write('\n')
-                    print('.')
+                    search_index += 1
+                    print(f'Znaleziono {search_index} ')
                     break
                 else:
                     step += 1

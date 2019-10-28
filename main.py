@@ -8,12 +8,13 @@
 
 # pip install docx
 # pip install python-docx
-#?? pip install textract
+# ?? pip install textract
 
 from tkinter import *
 from tkinter import filedialog as fd
 import webbrowser
 import def_pp
+
 
 class Aplikacja(Frame):
 
@@ -21,8 +22,6 @@ class Aplikacja(Frame):
         super(Aplikacja, self).__init__(master)
         self.grid()
         self.create_widgets()
-        # self.path_file = ''             # adres przeszukiwanego pliku
-        # self.radio_sign = ''        # wybór podziału dokumentu - 'Art.' lub '§'
 
     def create_widgets(self):
         # MENU
@@ -35,7 +34,7 @@ class Aplikacja(Frame):
         root.config(menu=menubar)
 
         # przycisk SZUKAJ
-        self.knefel1 = Button(self, text="SZUKAJ", height = 3, width = 20)
+        self.knefel1 = Button(self, text="SZUKAJ", height=3, width=20)
         self.knefel1.grid(row=7, column=0, sticky=E)
         self.knefel1['command'] = self.knefel_start
 
@@ -47,19 +46,18 @@ class Aplikacja(Frame):
         self.l_dev = Label(self, text='Sławek Jona - 2019 \n slawomir.jona@gmail.com')
         self.l_dev.grid(row=13, column=0, sticky=N)
 
-
         # Label nazwa pliku
         self.l_enter_file = Label(self, text='Szukaj w:')
         self.l_enter_file.grid(row=0, column=0, sticky=W)
         # pole nazwa pliku
-        self.enter_file = Entry(self, width = 60)
+        self.enter_file = Entry(self, width=60)
         self.enter_file.grid(row=1, column=0, sticky=W)
 
         # Label szukane słowo
         self.l_search_word = Label(self, text='Szukane słowo:')
         self.l_search_word.grid(row=2, column=0, columnspan=1, sticky=W)
         # pole szukane słowo
-        self.search_word = Entry(self, width = 60)
+        self.search_word = Entry(self, width=60)
         self.search_word.grid(row=3, column=0, columnspan=4, sticky=W)
 
         # Label znak podziału dokumentu
@@ -123,11 +121,9 @@ class Aplikacja(Frame):
             self.enter_file.delete(0, END)
             self.enter_file.insert(0, str(filename))
 
-
     def update_radio(self):
         self.doc_sign.get()
         print(str(self.doc_sign.get()))
-
 
 
 ####################
