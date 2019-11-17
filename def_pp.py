@@ -1,6 +1,6 @@
 
 import docx
-
+#zapisuje do pliku txt
 
 def search_word(file, word, sign):
 
@@ -9,9 +9,7 @@ def search_word(file, word, sign):
     search_word = word
     document_sign = sign
 
-    result_file = open(file_name[:len(file_name)-5]+'-'+search_word+'.txt', 'a')
-
-
+    result_file = open(file_name[:len(file_name)-5]+'-'+search_word+'2.txt', 'a')
     doc = docx.Document(file_name)
 
     print('Jeszcze moment')
@@ -32,5 +30,4 @@ def search_word(file, word, sign):
                     break
                 else:
                     step += 1
-
     result_file.close()

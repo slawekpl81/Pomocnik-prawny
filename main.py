@@ -10,10 +10,14 @@
 # pip install python-docx
 # ?? pip install textract
 
+
 from tkinter import *
 from tkinter import filedialog as fd
 import webbrowser
 import def_pp
+import def_pp_docx
+import classPP
+from animeGIF import AnimatedGIF
 
 
 class Aplikacja(Frame):
@@ -32,15 +36,22 @@ class Aplikacja(Frame):
         menubar.add_cascade(label="Menu", menu=filemenu)
 
         root.config(menu=menubar)
+        self.searching = classPP.SearchInDocx
 
         # przycisk SZUKAJ
         self.knefel1 = Button(self, text="SZUKAJ", height=3, width=20)
         self.knefel1.grid(row=7, column=0, sticky=E)
         self.knefel1['command'] = self.knefel_start
 
-        self.logo = PhotoImage(file="python2.gif")
-        self.l_image = Label(self, image=self.logo)
+        # self.logo = PhotoImage(file="python2.gif")
+        # self.l_image = Label(self, image=self.logo)
+        # self.l_image.grid(row=12, column=0, sticky=N)
+
+        ###################
+        self.l_image = AnimatedGIF(self, "python2.gif")
         self.l_image.grid(row=12, column=0, sticky=N)
+        self.l_image.pack()
+        ###################
 
         # Label autor
         self.l_dev = Label(self, text='Sławek Jona - 2019 \n slawomir.jona@gmail.com')
@@ -110,8 +121,9 @@ class Aplikacja(Frame):
             self.search_word.delete(0, END)
             self.search_word.insert(0, 'BRAKI !!!')
             return 0
-
-        def_pp.search_word(file, word, sign)
+        #self.searching.search_word(self, file, word, sign)
+        def_pp_docx.search_word(file, word, sign)
+        #def_pp.search_word(file, word, sign)
         return 0
 
     def open_file(self):
